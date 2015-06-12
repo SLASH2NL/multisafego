@@ -122,7 +122,7 @@ func (m *MultiSafePay) Execute(url *url.URL, method string, payload interface{},
 	if returnVal != nil {
 		err = json.Unmarshal(checkSuccess.Data, returnVal)
 		if err != nil {
-			return errorToAPIError(fmt.Errorf("Could not parse response: %s into:%s got error:", string(buff.Bytes()), reflect.TypeOf(returnVal).Name(), err))
+			return errorToAPIError(fmt.Errorf("Could not parse data field: %s into:%s got error:", string(buff.Bytes()), reflect.TypeOf(returnVal).Name(), err))
 		}
 	}
 

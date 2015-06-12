@@ -12,7 +12,7 @@ type Order map[string]interface{}
 // Payment is the response from PlaceOrder
 type Payment struct {
 	URL     string `json:"payment_url"`
-	OrderID string `json:"order_id"`
+	OrderID int    `json:"order_id"`
 }
 
 // OrderInfo is returned from the GetOrder function and contains the TransactionId which can be
