@@ -2,8 +2,8 @@ package multisafego
 
 // Issuer represents an issuer for an Gateway
 type Issuer struct {
-	Code        string `json:code`
-	Description string `json:description`
+	Code        string `json:"code"`
+	Description string `json:"description"`
 }
 
 // Issuers will return the issuers for the supplied gateway id

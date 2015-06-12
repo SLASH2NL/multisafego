@@ -5,7 +5,7 @@ import "strconv"
 // Gateway represents a gateway in multisafepay(IDEAL, Paypal)
 type Gateway struct {
 	ID          string `json:"id"`
-	Description string `"json:description"`
+	Description string `json:"description"`
 }
 
 // Gateways will return the gateways for the api
