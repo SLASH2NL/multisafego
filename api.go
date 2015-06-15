@@ -40,6 +40,10 @@ type APIError struct {
 	Data    interface{} `json:"data"`
 }
 
+func (a APIError) String() string {
+	return fmt.Sprintf("[%d] %s", a.Code, a.Message)
+}
+
 type errorLog struct {
 	URL      string
 	Request  []byte
