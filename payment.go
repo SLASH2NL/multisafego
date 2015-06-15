@@ -3,7 +3,6 @@ package multisafego
 import (
 	"errors"
 	"strconv"
-	"time"
 )
 
 // Order is the container for holding all the order parametersa that should be posted
@@ -18,17 +17,17 @@ type Payment struct {
 // OrderInfo is returned from the GetOrder function and contains the TransactionId which can be
 // used to grab the payment status
 type OrderInfo struct {
-	Amount         int       `json:"amount"`
-	AmountRefunded int       `json:"amount_refunded"`
-	Created        time.Time `json:"created"`
-	Currency       string    `json:"currency"`
-	Customer       struct {
+	Amount         int `json:"amount"`
+	AmountRefunded int `json:"amount_refunded"`
+	//Created        time.Time `json:"created"`
+	Currency string `json:"currency"`
+	Customer struct {
 		Email  string `json:"email"`
 		Locale string `json:"locale"`
 	} `json:"customer"`
-	Description    string    `json:"description"`
-	Modified       time.Time `json:"modified"`
-	OrderID        int       `json:"order_id"`
+	Description string `json:"description"`
+	//Modified       time.Time `json:"modified"`
+	OrderID        int `json:"order_id"`
 	PaymentDetails struct {
 		AccountHolderName     interface{} `json:"account_holder_name"`
 		AccountID             interface{} `json:"account_id"`
