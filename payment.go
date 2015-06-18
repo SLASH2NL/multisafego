@@ -31,7 +31,7 @@ type OrderInfo struct {
 	PaymentDetails struct {
 		AccountHolderName     interface{} `json:"account_holder_name"`
 		AccountID             interface{} `json:"account_id"`
-		ExternalTransactionID string      `json:"external_transaction_id"`
+		ExternalTransactionID interface{} `json:"external_transaction_id"`
 		RecurringID           interface{} `json:"recurring_id"`
 		Type                  string      `json:"type"`
 	} `json:"payment_details"`
