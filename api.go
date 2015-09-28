@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -29,7 +30,6 @@ type MultiSafePay struct {
 	apiKey  string
 	baseURL *url.URL
 	debug   bool
-	Logs    chan errorLog
 }
 
 // A APIError occurs when the response has a non 200 status code
@@ -52,7 +52,7 @@ type errorLog struct {
 
 // New returns a basic multisafepay object that can be set in debug mode to dump requests/responses
 func New(apiKey string, baseURL *url.URL, debug bool) *MultiSafePay {
-	return &MultiSafePay{apiKey, baseURL, debug, make(chan errorLog, 100)}
+	return &MultiSafePay{apiKey, baseURL, debug}
 }
 
 func errorToAPIError(err error) *APIError {
@@ -65,11 +65,7 @@ func Path(path string) string {
 }
 
 func (m *MultiSafePay) log(url string, request, response []byte) {
-	if len(m.Logs) == cap(m.Logs) {
-		<-m.Logs
-	}
-
-	m.Logs <- errorLog{url, request, response}
+	log.Printf("[%s]\nRequest:%s\nResponse:%s\n", url, string(request), string(response))
 }
 
 // Execute will do a json call to multisafepay
